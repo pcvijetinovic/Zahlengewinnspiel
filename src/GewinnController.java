@@ -47,7 +47,12 @@ public class GewinnController {
             );
 
             view.getSpielerEingabe().setEditable(false);
-            view.setNochmalButtonAktiv(true);
+
+            if (model.hatGewonnen() || model.hatVerloren()) {
+                view.setNochmalButtonAktiv(false);
+            } else {
+                view.setNochmalButtonAktiv(true);
+            }
 
         } catch (NumberFormatException e) {
             view.setRundenErgebnis("Bitte Zahl von 1 bis 9!");
