@@ -27,6 +27,7 @@ public class GewinnView extends JFrame {
         computerAusgabe.setEditable(false);
 
         nochmalButton = new JButton("Noch einmal!");
+        nochmalButton.setEnabled(false);
 
         setLayout(new GridLayout(3, 2));
 
@@ -37,23 +38,32 @@ public class GewinnView extends JFrame {
         add(new JLabel(""));
         add(nochmalButton);
     }
-        public JTextField getSpielerEingabe() {
-            return spielerEingabe;
-        }
+    public JTextField getSpielerEingabe() {
+        return spielerEingabe;
+    }
 
-        public JTextField getComputerAusgabe() {
-            return computerAusgabe;
-        }
+    public JTextField getComputerAusgabe() {
+        return computerAusgabe;
+    }
 
-        public JButton getNochmalButton() {
-            return nochmalButton;
-        }
+    public JButton getNochmalButton() {
+        return nochmalButton;
+    }
 
-        public void setRundenErgebnis(String text) {
-            rundenErgebnisLabel.setText(text);
-        }
+    public void setRundenErgebnis(String text) {
+        rundenErgebnisLabel.setText(text);
+    }
 
-        public void setGesamtPunkte(String text) {
-            gesamtPunkteLabel.setText(text);
-        }
+    public void setGesamtPunkte(String text) {
+        gesamtPunkteLabel.setText(text);
+    }
+
+    public void setNochmalButtonAktiv(boolean aktiv) {
+        nochmalButton.setEnabled(aktiv);
+    }
+
+    public void leereFelder() {
+        spielerEingabe.setText("");
+        computerAusgabe.setText("");
+    }
 }

@@ -8,6 +8,7 @@ public class GewinnController {
         this.view = view;
 
         view.getSpielerEingabe().addActionListener(e -> spieleRunde());
+        view.getNochmalButton().addActionListener(e -> neueRunde());
     }
 
     private void spieleRunde() {
@@ -45,8 +46,22 @@ public class GewinnController {
                     "Gesamtpunkte: " + model.getGesamtPunkte()
             );
 
+            view.getSpielerEingabe().setEditable(false);
+            view.setNochmalButtonAktiv(true);
+
         } catch (NumberFormatException e) {
             view.setRundenErgebnis("Bitte Zahl von 1 bis 9!");
         }
+    }
+
+    private void neueRunde() {
+        view.leereFelder();
+
+        if (!model.hatGewonnen() && !model.hatVerloren()) {
+            view.getSpielerEingabe().setEditable(true);
+            view.getSpielerEingabe().requestFocus();
+        }
+
+        view.setNochmalButtonAktiv(false);
     }
 }
