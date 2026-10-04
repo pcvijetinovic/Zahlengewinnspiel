@@ -18,7 +18,8 @@ public class GewinnController {
             );
 
             if (spielerZahl < 1 || spielerZahl > 9) {
-                view.setRundenErgebnis("Bitte Zahl von 1 bis 9!");
+                view.setRundenErgebnis("Ungültige Eingabe! Zahl von 1 bis 9 eingeben.");
+                view.getSpielerEingabe().selectAll();
                 return;
             }
 
@@ -55,7 +56,8 @@ public class GewinnController {
             }
 
         } catch (NumberFormatException e) {
-            view.setRundenErgebnis("Bitte Zahl von 1 bis 9!");
+            view.setRundenErgebnis("Ungültige Eingabe! Zahl von 1 bis 9 eingeben.");
+            view.getSpielerEingabe().selectAll();
         }
     }
 
