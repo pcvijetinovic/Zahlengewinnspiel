@@ -37,4 +37,23 @@ public class GewinnView extends JFrame {
         add(new JLabel(""));
         add(nochmalButton);
     }
+        public JTextField getSpielerEingabe() {
+            return spielerEingabe;
+        }
+
+        public JTextField getComputerAusgabe() {
+            return computerAusgabe;
+        }
+
+        public JButton getNochmalButton() {
+            return nochmalButton;
+        }
+
+        public void setRundenErgebnis(String text) {
+            rundenErgebnisLabel.setText(text);
+        }
+
+        public void setGesamtPunkte(String text) {
+            gesamtPunkteLabel.setText(text);
+        }
 }
