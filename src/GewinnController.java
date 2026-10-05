@@ -1,3 +1,4 @@
+import java.awt.Color;
 public class GewinnController {
 
     private GewinnModel model;
@@ -18,8 +19,7 @@ public class GewinnController {
             );
 
             if (spielerZahl < 1 || spielerZahl > 9) {
-                view.setRundenErgebnis("Ungültige Eingabe! Zahl von 1 bis 9 eingeben.");
-                view.getSpielerEingabe().selectAll();
+                view.setRundenErgebnis("Bitte Zahl von 1 bis 9!");
                 return;
             }
 
@@ -30,17 +30,27 @@ public class GewinnController {
                     String.valueOf(model.getComputerZahl())
             );
 
-            // Prüfen, ob das Spiel vorbei ist
+            // Rundenergebnis anzeigen und Labels einfärben
             if (model.hatGewonnen()) {
-                view.setRundenErgebnis("Gewonnen! Spiel beendet.");
-                view.getSpielerEingabe().setEditable(false);
+                view.setRundenErgebnis("Gewonnen! 100 Punkte erreicht.");
+                view.setLabelFarbe(Color.GREEN);
+
             } else if (model.hatVerloren()) {
                 view.setRundenErgebnis("Verloren!");
-                view.getSpielerEingabe().setEditable(false);
+                view.setLabelFarbe(Color.RED);
+
             } else {
                 view.setRundenErgebnis(
                         String.valueOf(model.getRundenErgebnis())
                 );
+
+                if (model.getRundenErgebnis() > 0) {
+                    view.setLabelFarbe(Color.GREEN);
+                } else if (model.getRundenErgebnis() < 0) {
+                    view.setLabelFarbe(Color.RED);
+                } else {
+                    view.setLabelFarbe(Color.WHITE);
+                }
             }
 
             view.setGesamtPunkte(
@@ -48,21 +58,16 @@ public class GewinnController {
             );
 
             view.getSpielerEingabe().setEditable(false);
-
-            if (model.hatGewonnen() || model.hatVerloren()) {
-                view.setNochmalButtonAktiv(false);
-            } else {
-                view.setNochmalButtonAktiv(true);
-            }
+            view.setNochmalButtonAktiv(true);
 
         } catch (NumberFormatException e) {
-            view.setRundenErgebnis("Ungültige Eingabe! Zahl von 1 bis 9 eingeben.");
-            view.getSpielerEingabe().selectAll();
+            view.setRundenErgebnis("Bitte Zahl von 1 bis 9!");
         }
     }
 
     private void neueRunde() {
         view.leereFelder();
+        view.setLabelFarbe(Color.WHITE);
 
         if (!model.hatGewonnen() && !model.hatVerloren()) {
             view.getSpielerEingabe().setEditable(true);

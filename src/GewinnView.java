@@ -66,4 +66,12 @@ public class GewinnView extends JFrame {
         spielerEingabe.setText("");
         computerAusgabe.setText("");
     }
+
+    public void setLabelFarbe(Color farbe) {
+        rundenErgebnisLabel.setBackground(farbe);
+        gesamtPunkteLabel.setBackground(farbe);
+
+        rundenErgebnisLabel.setOpaque(true);
+        gesamtPunkteLabel.setOpaque(true);
+    }
 }
