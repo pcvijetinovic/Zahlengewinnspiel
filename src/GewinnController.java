@@ -32,7 +32,7 @@ public class GewinnController {
 
             // Prüfen, ob das Spiel vorbei ist
             if (model.hatGewonnen()) {
-                view.setRundenErgebnis("Gewonnen!");
+                view.setRundenErgebnis("Gewonnen! Spiel beendet.");
                 view.getSpielerEingabe().setEditable(false);
             } else if (model.hatVerloren()) {
                 view.setRundenErgebnis("Verloren!");
