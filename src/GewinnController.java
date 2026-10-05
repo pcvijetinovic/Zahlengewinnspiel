@@ -32,7 +32,7 @@ public class GewinnController {
 
             // Rundenergebnis anzeigen und Labels einfärben
             if (model.hatGewonnen()) {
-                view.setRundenErgebnis("Gewonnen!");
+                view.setRundenErgebnis("Gewonnen! 100 Punkte erreicht.");
                 view.setLabelFarbe(Color.GREEN);
 
             } else if (model.hatVerloren()) {
